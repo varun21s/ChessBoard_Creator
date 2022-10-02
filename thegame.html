@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-      body{
-          margin:0;
-          padding:0;
+        body {
+            margin: 0;
+            padding: 0;
 
-      }
-      canvas{
-          border:2px solid black;
-          margin: 20px;
-      }
+        }
 
+        canvas {
+            border: 2px solid black;
+            margin: 20px;
+        }
     </style>
 </head>
+
 <body>
     <canvas id="canvas"></canvas>
 </body>
 <script>
-    var canvas=document.getElementById("canvas");
-    canvas.width=innerWidth;
-    canvas.height=innerHeight;
-    var c=canvas.getContext("2d");
-    var x=20,y=20,w=80,h=80,v=0;
-    c.fillStyle="grey";
-    c.fillRect(0,0,innerWidth,innerHeight);
+    var canvas = document.getElementById("canvas");
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    var c = canvas.getContext("2d");
+    var defRow = 8, defCol = 8;
+    var x = 20, y = 20, w = 80, h = 80, v = 0;
+    c.fillStyle = "grey";
+    c.fillRect(0, 0, innerWidth, innerHeight);
     c.fill();
-    c.fillStyle="white";
-    var rr=2;
-    rr=prompt("enter row");
-    var cc=2;
-    cc=prompt("enter column");
-    for(let r=0;r<rr;r++)
-    {
-        if(r%2==1)
-        {
-            v=1;
+    c.fillStyle = "white";
+    
+    var rr = parseInt(prompt("enter row", "8"), 10);
+    rr = isNaN(rr) ? defRow : rr;
+
+    var cc = parseInt(prompt("enter column", "8"), 10);
+    cc = isNaN(cc) ? defCol : cc;
+
+    for (let r = 0; r < rr; r++) {
+        if (r % 2 == 1) {
+            v = 1;
         }
         else
-        v=0;
-        for(let c1=0;c1<cc;c1++)
-        {
-            if(c1%2==v)
-            {
-                c.fillStyle="black";
+            v = 0;
+        for (let c1 = 0; c1 < cc; c1++) {
+            if (c1 % 2 == v) {
+                c.fillStyle = "black";
             }
             else
-            c.fillStyle="white";
-           
-            c.fillRect(x,y,w,h);
+                c.fillStyle = "white";
+
+            c.fillRect(x, y, w, h);
             c.fill();
-            x=x+80;
-            
+            x = x + 80;
+
         }
-        y=y+80;
-        x=20;
+        y = y + 80;
+        x = 20;
     }
 </script>
+
 </html>
